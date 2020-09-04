@@ -1,0 +1,14 @@
+
+
+Primer Segundo parcial
+Examen => 40
+eval continua => 30
+ejercicios => 30
+
+
+Parcial Final
+Examen => 40
+eval continua => 20
+Proyecto integrador => 40
+
+

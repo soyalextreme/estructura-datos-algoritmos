@@ -1,0 +1,28 @@
+Presentacion del curso.
+
+Nombre:
+Carrera:
+Pandemia:
+Que esperamos de la materia:
+Lenguajes de programacion:
+  -Que dominas
+  -Que haz utilizado
+
+System.out.println("Java tiene una sintaxis verbosa");
+print("Python es minimalista y hermoso")
+
+
+
+6 octubre primer parcial
+9 retroalimentacion
+
+
+10 noviembre segundo parcial
+13 retroalimentacion
+
+15 diciembre tercer parcial
+18 cerramos semestre 
+
+C++  => 
+
+Repaso
