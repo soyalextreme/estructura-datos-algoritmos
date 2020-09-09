@@ -7,7 +7,6 @@ public class HelloWorld {
     public static void sayHelllo(String name) {
         /**
          * My first documented function from this course first hello world
-         * 
          * @param name
          */
         System.out.println(name + "says:");
