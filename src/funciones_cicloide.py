@@ -27,9 +27,12 @@ def draw_graph(x, y, size, color):
 
 
 def main():
-    r = input_int("Circle Radius:\n") 
-    n_p = input_int("Until which PI value you wanna graph:\n")
-    n_t = input_int("How many PI values for generating teta angles:\n")
+    print("CYCLODE FUNCTION - OPTION 6")
+    print("*"*20)
+    print("Advice: Not allowing negative numbers")
+    r = input_int("Circle Radius:\n", allow_negative=False) 
+    n_p = input_int("Until which PI value you wanna graph:\n", allow_negative=False)
+    n_t = input_int("How many PI values for generating teta angles:\n", allow_negative=False)
     val = 0
     teta_angle = []
     for n in range(n_t):

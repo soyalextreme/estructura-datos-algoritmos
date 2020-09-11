@@ -2,7 +2,7 @@ import math
 from bokeh.plotting import figure, show
 from lib.prints import print_table
 
-def funciones_parametricas(params, fx, fy, size):
+def funciones_parametricas(params, fx, fy, size, func_expresion):
     x = []
     y = []
     for i in params:
@@ -10,8 +10,10 @@ def funciones_parametricas(params, fx, fy, size):
         x_n = fx(i) 
         x.append(x_n)
         y.append(y_n)
-    draw_graph(x, y, size, "red")
+    
+    print(func_expresion)
     print_table(x, y, params)
+    draw_graph(x, y, size, "red")
 
 
 def draw_graph(x, y, size, color):
@@ -37,9 +39,13 @@ def main():
         return i / (i + 1)
 
 
-    funciones_parametricas(params_ex_1, fx_ex_1, fy_ex_1, 0.05)
+    funciones_parametricas(params_ex_1, fx_ex_1, fy_ex_1, 0.05,
+        func_expresion="f(x) = 3 Cos (θ)\nf(y) = 4 Sen (θ)\n"
+    )
     print("\n"*4)
-    funciones_parametricas(params_ex_2, fx_ex_2, fy_ex_2, 0.006)
+    funciones_parametricas(params_ex_2, fx_ex_2, fy_ex_2, 0.006,
+        func_expresion="f(x) = 1 / √θ+1 \nf(y) = θ / θ + 1\n"
+    )
 
 if __name__ == "__main__":
     main()

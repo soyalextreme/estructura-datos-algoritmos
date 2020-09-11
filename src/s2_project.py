@@ -5,6 +5,8 @@ from funciones_parametricas import main as funciones_parametricas
 from funciones_cicloide import main as funciones_cicloide
 
 
+EXIT_VALUE = 7
+
 def still():
     """ Checks the input o cancel de menu or no 
         Consider that in the main menu the opc that close cicle is 
@@ -14,7 +16,7 @@ def still():
     opc = input("Wanna continue: [y/n]")
     if opc == 'n':
         print("Good Bye... ")
-        return 5
+        return EXIT_VALUE
     return 0
 
 
@@ -56,6 +58,7 @@ def average_grades():
     r = 0
 
     print_title("OPTION 3-AVERAGE GRADES")
+    print("Advice: Not allowing negative numbers")
     all_grades = input_list(type="grade", allow_negative_num=False);
     # calculating
     for g in all_grades:
@@ -80,7 +83,7 @@ def max_number():
 def menu():
     """ Main menu function """  
     opc = 0
-    while int(opc) != 5:
+    while opc != EXIT_VALUE:
         print(""" 
         MAIN MENU
         ***************************************
@@ -115,7 +118,7 @@ def menu():
         elif opc == 6:
             funciones_cicloide()
             opc = still()
-        elif opc == 7:
+        elif opc == EXIT_VALUE:
             print("Good Bye..")
         else:
             print("Option No valid Check de menu")
