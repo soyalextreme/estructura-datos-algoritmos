@@ -7,11 +7,14 @@ def input_int(msg):
         return 0
 
 
-def input_number_list(type="item"):
+def input_number_list(type="item", allow_negative_num=True):
     l = []
     s = ""
     def insert_item():
         item = input_int(f"Insert {type}: ") 
+        if not allow_negative_num:
+            print("Not allowing negative numbers taking absolute value")
+            item = abs(item)
         l.append(item)
         s = input(f"Press [R] to stop\nEnter to add another {type}").lower()
         return s

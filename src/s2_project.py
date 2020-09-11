@@ -1,6 +1,8 @@
 from math import sqrt
 # own lib
 from lib.inputs import input_int, input_number_list as input_list, print_title
+from funciones_parametricas import main as funciones_parametricas
+from funciones_cicloide import main as funciones_cicloide
 
 
 def still():
@@ -22,17 +24,15 @@ def cuadratic_ecuations():
     a = input_int("Insert a number A in ecuation: ")
     b = input_int("Insert a number B in ecuation: ")
     c = input_int("Insert a number C in ecuation: ")
-    # if(a <= 0):
-    #     print("No cero div")
-    #     return 0, 0
     try:
         x1 = (-b + sqrt(b**2 - 4*a*c)) / (2 * a)
         x2 = (-b - sqrt(b**2 - 4*a*c)) / (2 * a)
     except ValueError:
-        print("Working with imaginary numbers.")
-        return 0, 0
+        x1 = (-b + sqrt(abs(b**2 - 4*a*c))) / (2 * a)
+        x2 = (-b - sqrt(abs(b**2 - 4*a*c))) / (2 * a)
+        return print(f"x1: {x1}i\nx2:{x2}i")
     except ZeroDivisionError:
-        print("We cant dive into 0.")
+        return print("We cant dive into 0.")
     print(f"x1: {x1}\nx2:{x2}")
 
 
@@ -56,7 +56,7 @@ def average_grades():
     r = 0
 
     print_title("OPTION 3-AVERAGE GRADES")
-    all_grades = input_list(type="grade");
+    all_grades = input_list(type="grade", allow_negative_num=False);
     # calculating
     for g in all_grades:
         r += g
@@ -88,7 +88,9 @@ def menu():
         2. Solution Cuadratic Equations 
         3. Average of n Grades 
         4. Higher value of n Numbers
-        5. Salir
+        5. Parametric Functions - Vector Calculation
+        6. Cycloid Funcitions - Vector Calculation
+        7. Salir
         """)
 
         # Input
@@ -107,7 +109,13 @@ def menu():
         elif opc == 4:
             max_number()
             opc = still()
-        elif int(opc) == 5:
+        elif opc == 5:
+            funciones_parametricas()
+            opc = still() 
+        elif opc == 6:
+            funciones_cicloide()
+            opc = still()
+        elif opc == 7:
             print("Good Bye..")
         else:
             print("Option No valid Check de menu")
