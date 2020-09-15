@@ -1,8 +1,9 @@
 import math
-from bokeh.plotting import figure, show
-from lib.prints import print_table
+from lib.prints import print_table, draw_graph
 
-def funciones_parametricas(params, fx, fy, size, func_expresion):
+
+def parametric_function(params, fx, fy, size, func_expresion):
+    """ This function solves and calculetes n paramas constrains in fx and fy and then graphs this expressions in the plane"""
     x = []
     y = []
     for i in params:
@@ -14,15 +15,6 @@ def funciones_parametricas(params, fx, fy, size, func_expresion):
     print(func_expresion)
     print_table(x, y, params)
     draw_graph(x, y, size, "red")
-
-
-def draw_graph(x, y, size, color):
-    plot = figure(plot_height=1000, plot_width=1000, title="Ecuaciones Parametricas", tools="save")
-    plot.annulus(x=x, y=y, inner_radius=size,
-              color=color, alpha=0.5)
-    plot.line(x=x, y=y, line_width=3, line_alpha=0.6)
-  
-    show(plot)
 
 
 def main():
@@ -39,11 +31,11 @@ def main():
         return i / (i + 1)
 
 
-    funciones_parametricas(params_ex_1, fx_ex_1, fy_ex_1, 0.05,
+    parametric_function(params_ex_1, fx_ex_1, fy_ex_1, 0.05,
         func_expresion="f(x) = 3 Cos (θ)\nf(y) = 4 Sen (θ)\n"
     )
     print("\n"*4)
-    funciones_parametricas(params_ex_2, fx_ex_2, fy_ex_2, 0.006,
+    parametric_function(params_ex_2, fx_ex_2, fy_ex_2, 0.006,
         func_expresion="f(x) = 1 / √θ+1 \nf(y) = θ / θ + 1\n"
     )
 

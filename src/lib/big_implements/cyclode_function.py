@@ -1,9 +1,14 @@
 import math
 from lib.inputs import input_int
-from lib.prints import print_table
-from bokeh.plotting import figure, show
+from lib.prints import print_table, draw_graph
 
-def funciones_cicloides(radius, teta_angle):
+
+def cycloid_function(radius, teta_angle):
+    """ This function calculates and graphs the cycloid function depending on the paramas
+        params:
+            radius of the circle
+            teta angle => the limit of the cycloid
+    """
     x = []
     y = []
 
@@ -17,17 +22,8 @@ def funciones_cicloides(radius, teta_angle):
     print_table(x, y, teta_angle)
 
 
-def draw_graph(x, y, size, color):
-    plot = figure(plot_height=1000, plot_width=1000, title="Ecuaciones Parametricas", tools="save")
-    plot.annulus(x=x, y=y, inner_radius=size,
-              color=color, alpha=0.5)
-    plot.line(x=x, y=y, line_width=3, line_alpha=0.6)
-  
-    show(plot)
-
-
 def main():
-    print("CYCLODE FUNCTION - OPTION 6")
+    print("CYCLODE FUNCTION - OPTION 7")
     print("*"*20)
     print("Advice: Not allowing negative numbers")
     r = input_int("Circle Radius:\n", allow_negative=False) 
@@ -39,9 +35,7 @@ def main():
         while val < n_p * math.pi:
             val += 1/ n_t * math.pi 
             teta_angle.append(val)
-
-
-    funciones_cicloides(r, teta_angle=teta_angle)
+    cycloid_function(r, teta_angle=teta_angle)
 
 if __name__ == "__main__":
     main()
