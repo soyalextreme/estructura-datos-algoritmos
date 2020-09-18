@@ -7,6 +7,8 @@ from lib.constants import EXIT_VALUE
 from lib.implements import triangle_area, cuadratic_ecuations, average_grades, max_number, max_random_num 
 from lib.big_implements.parametric_function import main as parametric_function
 from lib.big_implements.cyclode_function import main as cyclode_function
+from lib.big_implements.exceptions import run_custom_exception  
+from lib.big_implements.exceptions import run_manage_custom_exception
 
 
 def main_menu():
@@ -24,7 +26,9 @@ def main_menu():
         5. Hiegher value of random Numbers
         6. Parametric Functions - Vector Calculation
         7. Cycloid Funcitions - Vector Calculation
-        8. Exit
+        8. Custom Error - Warning crash the program
+        9. Custom Error managed - Exception catched
+        10. Exit
         """)
 
         # Input
@@ -53,6 +57,12 @@ def main_menu():
             opc = still() 
         elif opc == 7:
             cyclode_function()
+            opc = still()
+        elif opc == 8:
+            run_custom_exception()
+            # this exeception ends program
+        elif opc == 9:
+            run_manage_custom_exception()
             opc = still()
         elif opc == EXIT_VALUE:
             exit()

@@ -16,6 +16,7 @@ def exit():
     """ Function in charge of the exit process of the program
         Example delete temporary files as the graphs generated
     """
+    os.system("rm __init__.html")
     print("Bye...")
  
 
@@ -30,5 +31,4 @@ def still():
         print("Good Bye... ")
         return EXIT_VALUE
     clean_screen()
-    os.system("rm __init__.html")
     return 0   

@@ -1,4 +1,8 @@
-""" This file contians all the functions use for funcionality in the project """
+"""
+    This file contians all the functions use for funcionality in the project 
+    Alejandro AS
+"""
+
 from math import sqrt
 import random
 
