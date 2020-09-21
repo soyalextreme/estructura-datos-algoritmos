@@ -1,12 +1,21 @@
 
-def input_int(msg, allow_negative=True):
+def input_int(msg, allow_negative=True, max_val = None, min_val = None,
+              default = 0):
     """ Recibes input and handles error returning 0 by error default """
     try:
+        n =  int(input(msg))
+        
         if not allow_negative:
-            return abs(int(input(msg)))
-        return int(input(msg))
+            n = abs(n)
+        if max_val is not None and n > max_val:
+            n = max_val
+        
+        if min_val is not None and n < min_val:
+            n = min_val
+
+        return n
     except ValueError:
-        return 0
+        return default
 
 
 def input_number_list(type="item", allow_negative_num=True, max_n=None, min_n=None):

@@ -9,6 +9,7 @@ from lib.big_implements.parametric_function import main as parametric_function
 from lib.big_implements.cyclode_function import main as cyclode_function
 from lib.big_implements.exceptions import run_custom_exception  
 from lib.big_implements.exceptions import run_manage_custom_exception
+from lib.big_implements.determinat_matrix import menu as determinat_menu
 
 
 def main_menu():
@@ -28,7 +29,8 @@ def main_menu():
         7. Cycloid Funcitions - Vector Calculation
         8. Custom Error - Warning crash the program
         9. Custom Error managed - Exception catched
-        10. Exit
+        10. Determinat Matrix
+        11. Exit
         """)
 
         # Input
@@ -63,6 +65,9 @@ def main_menu():
             # this exeception ends program
         elif opc == 9:
             run_manage_custom_exception()
+            opc = still()
+        elif opc == 10:
+            determinat_menu()
             opc = still()
         elif opc == EXIT_VALUE:
             exit()
