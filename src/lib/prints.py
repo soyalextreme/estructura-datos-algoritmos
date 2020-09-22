@@ -1,5 +1,6 @@
 """ Functions related to print somthing to the user by the system """
 import os
+import random
 from bokeh.plotting import figure, show
 
 
@@ -39,5 +40,19 @@ def draw_graph(x, y, size, color):
     plot.annulus(x=x, y=y, inner_radius=size,
               color=color, alpha=0.5)
     plot.line(x=x, y=y, line_width=3, line_alpha=0.6)
+    show(plot)
+
+
+
+def draw_multiple_graphs(n, size, color):
+    plot = figure(plot_height=1000, plot_width=1000, title="Ecuaciones Parametricas", tools="save")
+    color_choices = ["red", "pink", "blue"]
+    for func in n:
+        x = func[0]
+        y = func[1]
+        plot.annulus(x=x, y=y, inner_radius=size,
+              color=color, alpha=0.5)
+        plot.line(x=x, y=y, line_width=3,
+                  line_alpha=0.6,color=color_choices[random.randint(0,2)])
     show(plot)
 
