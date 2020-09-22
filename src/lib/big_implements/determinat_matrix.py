@@ -1,4 +1,6 @@
 import random
+import numpy as np
+
 from lib.inputs import input_int 
 from lib.util import clean_screen
 
@@ -160,9 +162,12 @@ def menu():
         if opc == 1:
             size = input_int("Size of the matrix:",allow_negative=False, default=2, min_val=2, max_val=5)
             m = create_matrix(size)
+            m_numpy = np.array(m)
             print_matrix(m)
             r = det(m)
+            r_numpy = np.linalg.det(m_numpy) 
             print(f"|m| = {r}")
+            print(f"Resultado de numpy: {r_numpy}")
             input("Enter to continue")
             clean_screen()
         if opc == 2:
@@ -170,9 +175,12 @@ def menu():
                              max_val=15, allow_negative=False,
                              default=2)
             m = gen_random_matrix(size)
+            m_numpy = np.array(m)
             print_matrix(m)
+            r_numpy = np.linalg.det(m_numpy) 
             r = det(m)
             print(f"|m| = {r}")
+            print(f"Resultado de numpy: {r_numpy}")
             input("Enter to continue")
             clean_screen()
         if opc == 3:
