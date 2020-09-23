@@ -5,7 +5,6 @@ from lib.inputs import input_int
 from lib.util import clean_screen
 
 
-
 def print_matrix(m):
     """
         This function prints in format a matrix.

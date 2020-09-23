@@ -2,6 +2,24 @@ import math
 from lib.prints import print_table, draw_graph, draw_multiple_graphs
 
 
+def pf_decorator(function):
+    def wrapper():
+        x = []
+        y = []
+        x_fun, y_fun, params = function()
+
+        for t in params:
+            x.append(x_fun(t))
+            y.append(y_fun(t))
+        print_table(x, y, params)
+        draw_graph(x, y, 0.005, "red")
+        return x, y
+    return wrapper
+
+
+
+
+
 def parametric_function(params, fx, fy, size, func_expresion,
                         tangent=None, mx=None, function_my=None):
     """ This function solves and calculetes n paramas constrains in fx and fy and then graphs this expressions in the plane"""
