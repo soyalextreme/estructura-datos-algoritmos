@@ -5,7 +5,6 @@ from lib.prints import print_title
 from lib.util import exit, still, clean_screen
 from lib.constants import EXIT_VALUE
 from lib.implements import triangle_area, cuadratic_ecuations, average_grades, max_number, max_random_num 
-from lib.big_implements.parametric_function import main as parametric_function
 from lib.big_implements.cyclode_function import main as cyclode_function
 from lib.big_implements.exceptions import run_custom_exception  
 from lib.big_implements.exceptions import run_manage_custom_exception
@@ -55,7 +54,7 @@ def main_menu():
             max_random_num(size)
             opc = still()
         elif opc == 6:
-            parametric_function()
+            print("DEVELOPING")
             opc = still() 
         elif opc == 7:
             cyclode_function()
