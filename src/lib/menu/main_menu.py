@@ -9,6 +9,7 @@ from lib.big_implements.cyclode_function import main as cyclode_function
 from lib.big_implements.exceptions import run_custom_exception  
 from lib.big_implements.exceptions import run_manage_custom_exception
 from lib.big_implements.determinat_matrix import menu as determinat_menu
+from lib.big_implements.parametric_function import main as parametric_fun
 
 
 def main_menu():
@@ -23,7 +24,7 @@ def main_menu():
         2. Solution Cuadratic Equations 
         3. Average of n Grades 
         4. Higher value of n Numbers
-        5. Hiegher value of random Numbers
+        5. Higher value of random Numbers
         6. Parametric Functions - Vector Calculation
         7. Cycloid Funcitions - Vector Calculation
         8. Custom Error - Warning crash the program
@@ -54,7 +55,7 @@ def main_menu():
             max_random_num(size)
             opc = still()
         elif opc == 6:
-            print("DEVELOPING")
+            parametric_fun()
             opc = still() 
         elif opc == 7:
             cyclode_function()
