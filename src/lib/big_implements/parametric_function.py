@@ -58,16 +58,99 @@ def pft_decorator(function):
             x.append(x_fun(t))
             y.append(y_fun(t))
 
-        for x in mx:
-            my.append(t_y_fun(x))
+        for l in mx:
+            my.append(t_y_fun(l))
         
 
+
+        print_table(x, y, params)
         graphs = [[x, y], [mx, my]]
         draw_multiple_graphs(graphs, 0.005, "red")
 
     return wrapper
 
 
+
+
+def main():
+
+
+    @pf_decorator
+    def excercise():
+        def x(t):
+            return math.sin((1/2) * t)
+
+        def y(t):
+            return math.cos((1/2) * t)
+
+        params = [-1*math.pi, -1*math.pi/2, 0, math.pi/2, math.pi]
+
+        return x, y, params
+
+    
+    @pf_decorator
+    def ex_2():
+        def x(delta):
+            return 1 * (delta - math.sin(delta))
+
+        def y(delta):
+            return 1 * (1 - math.cos(delta))
+
+        params = [-1*math.pi, -1*math.pi/2, 0, math.pi/2, math.pi, 0.8414, -1,
+                 math.pi /3]
+        return x, y, params
+
+
+
+    @pft_decorator
+    def ex_3():
+        def x(t):
+            return math.pow(t, 2) - 4
+
+        def y(t):
+            return math.pow(t, 3) - (3 * t)
+
+        def tangent_function(x):
+            m = 1.33
+            return m * x + 2
+
+        params = [ n for n in range(-6, 6) ]
+        params_tangent = [n for n in range(-20, 20)]
+
+
+        return x, y, params, params_tangent, tangent_function
+
+
+    @pft_decorator
+    def ex_3_2():
+        def x(t):
+            return math.pow(t, 2) - 4
+
+        def y(t):
+            return math.pow(t, 3) - (3 * t)
+
+        def tangent_function(x):
+            m = -1.33
+            return m * x - 2
+
+        params = [ n for n in range(-6, 6) ]
+        params_tangent = [n for n in range(-20, 20)]
+
+
+        return x, y, params, params_tangent, tangent_function
+
+
+
+    ex_3()
+    ex_3_2()
+
+
+
+
+
+
+#    excercise()
+#    ex_2()
 
 
 
