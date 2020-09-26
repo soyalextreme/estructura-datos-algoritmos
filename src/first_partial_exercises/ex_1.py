@@ -16,7 +16,7 @@ def n_tables(n):
             errors += 1
     print(f"Assertions {asserts} Errors {errors}")
     if asserts == 10:
-        print("Excellent Job buddy")
+        print("Excellent Job buddie")
     elif asserts < 10 and asserts >= 8:
         print("Nice! you can improve")
     elif asserts < 8:

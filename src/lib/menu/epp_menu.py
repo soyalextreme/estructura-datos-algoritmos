@@ -24,7 +24,7 @@ class Menu():
     __opc = 0
     __posible_options = [] 
 
-    def __init__(self, opcs, welcome, exit_val):
+    def __init__(self, opcs, exit_val, welcome=False):
         """
             Constructor of the class Menu
             Params:
@@ -106,7 +106,10 @@ class Menu():
         """
             The exit function for the menu
         """
-        print("Bye...")
+        if self.__welcome:
+            print("Bye...")
+        else:
+            print("Going to prev menu")
 
 
     def start(self):
