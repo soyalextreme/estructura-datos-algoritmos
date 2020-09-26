@@ -11,18 +11,16 @@ Lenguajes de programacion:
 System.out.println("Java tiene una sintaxis verbosa");
 print("Python es minimalista y hermoso")
 
-
-
 6 octubre primer parcial
 9 retroalimentacion
 
 
-10 noviembre segundo parcial
+17 noviembre segundo parcial
 13 retroalimentacion
 
 15 diciembre tercer parcial
-18 cerramos semestre 
+18 cerramos semestre
 
-C++  => 
+C++  =>
 
 Repaso
