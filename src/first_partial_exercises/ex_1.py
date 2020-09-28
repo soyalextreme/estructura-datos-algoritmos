@@ -1,6 +1,14 @@
-
+"""
+    26-09-2020
+    Excersice 1 
+    Estructura de Datos y algoritmos
+    6to Semestre
+    Learn Multiplication Tables.
+    Alejandro AS
+"""
 
 from lib.inputs import input_int
+
 
 def n_tables(n):
     print("Lets Start!!")
@@ -13,6 +21,7 @@ def n_tables(n):
             asserts += 1
             input("Correct! Congrats")
         else:
+            input(f"Ups! Incorrect it was {i * n}")
             errors += 1
     print(f"Assertions {asserts} Errors {errors}")
     if asserts == 10:
@@ -32,5 +41,5 @@ def main():
         print("What a easy challenge")
     elif n >= 12:
         print("Wow you the difficult challenges")
-    
+
     n_tables(n)

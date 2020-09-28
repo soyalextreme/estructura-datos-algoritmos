@@ -5,9 +5,6 @@
 from lib.menu.epp_menu import Menu
 from first_partial_exercises.options import MAIN_MENU 
 
-def learn_tables():
-    print("learning")
-
 def main():
     m = Menu(MAIN_MENU, welcome=True, exit_val=10)
     m.start()
