@@ -11,15 +11,6 @@ from lib.menu.epp_menu import Menu
 from lib.inputs import input_int, input_float, input_str_non_empty
 
 
-# def print_format(a, b, c, d, e):
-#     """
-#         Printing a table of n columns
-#     """
-#     print("|  {0:^25}  |  {1:^25}  |  {2:^25}  | {3:^25}  |  {4:^25}  |".format(
-#         a, b, c, d, e))
-#     print("*"*150)
-
-
 def print_format(l):
     chain = ""
     for i in l:
@@ -91,6 +82,7 @@ class Report():
                       "Base Cost", "Production Cost"])
         if len(self.articles) == 0:
             print("No articles added, Please Add at least one")
+            return 0
 
         for article in self.articles:
             print_format([article.description, article.amount_produced,

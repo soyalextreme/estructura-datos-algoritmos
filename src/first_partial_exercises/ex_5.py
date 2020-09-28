@@ -20,6 +20,9 @@ CLIENTS = []
 
 
 class Client():
+    """
+        Client but with the email for multiple ticket transactions.
+    """
     name = ""
     email = ""
 
@@ -29,12 +32,14 @@ class Client():
 
 
 def selection_client():
+    """
+        Function to select the client to add transaction
+    """
     s = ""
     if len(CLIENTS) == 1:
         return CLIENTS[0]
 
     i = 0
-#    increment = 1
     while s.lower() != "s":
         clean_screen()
         print(CLIENTS[i].name)
@@ -50,6 +55,9 @@ def selection_client():
 
 
 def handle_add_ticket():
+    """
+        Function that handles to add a ticket.
+    """
     if len(CLIENTS) == 0:
         print("No clients register for the momento, Cant do transactions.")
         print("Please, Add a client")
@@ -75,6 +83,9 @@ def handle_add_ticket():
 
 
 def handle_add_client():
+    """
+        Function that handles to add a client
+    """
     name = input_str_non_empty("Client Name: ")
     email = input_str_non_empty("Client email: ")
     c = Client(name, email)
@@ -84,6 +95,9 @@ def handle_add_client():
 
 
 def main():
+    """
+        Main function that handles this excersice.
+    """
 
     ARTICLE_REPORT_OPC = [
         (1, "ADD CLIENT", handle_add_client),

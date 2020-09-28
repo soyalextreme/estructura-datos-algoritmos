@@ -61,7 +61,7 @@ class Custom_Report(Report):
                       "Utility", "Taxes", "Sell Price"])
 
         if len(self.articles) == 0:
-            print("No hay articulos")
+            print("No Articles please add one")
             return 0
 
         for article in self.articles:

@@ -15,6 +15,9 @@ from lib.util import still_bool, clean_screen
 
 
 class Article():
+    """
+        Custom Article for the ticket
+    """
     description = ""
     amount = 0
     unitary_price = 0
@@ -29,6 +32,10 @@ class Article():
 
 
 class Ticket(Report):
+    """
+        Class that inherits from the report and mod the function to show report.
+
+    """
     client_name = ""
 
     def __init__(self, client_name):
