@@ -10,7 +10,7 @@
 
 from first_partial_exercises.ex_2 import Report, print_format
 from lib.menu.epp_menu import Menu
-from lib.inputs import input_int, input_float
+from lib.inputs import input_int, input_float, input_str_non_empty
 from lib.util import still_bool, clean_screen
 
 
@@ -67,9 +67,9 @@ def main():
     while still:
         print("Adding New Article")
         print("*" * 20)
-        desc = input("Description Article: ")
-        amount = input_int("Amount: ", False)
-        price = input_int("Price per product: ", False)
+        desc = input_str_non_empty("Description Article: ")
+        amount = input_int("Amount: ", False, min_val=1, default=1)
+        price = input_int("Price per product: ", False, min_val=1, default=1)
         new_article = Article(desc, amount, price)
         t.add_article(new_article)
 

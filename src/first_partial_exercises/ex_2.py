@@ -8,7 +8,7 @@
 """
 
 from lib.menu.epp_menu import Menu
-from lib.inputs import input_int, input_float
+from lib.inputs import input_int, input_float, input_str_non_empty
 
 
 # def print_format(a, b, c, d, e):
@@ -105,10 +105,11 @@ def main():
     r = Report()
 
     def handle_add():
-        desc = input("Article Description: ")
-        amount = input_int("Article Amount: ", False)
+        desc = input_str_non_empty("Article Description: ")
+        amount = input_int("Article Amount: ", False, min_val=1, default=1)
         ex_factor = input_float("Article Factor Cost: ", False)
-        base_cost = input_int("Article base cost: ", False)
+        base_cost = input_int("Article base cost: ",
+                              False, min_val=1, default=1)
 
         article = Article(desc, amount, ex_factor, base_cost)
         r.add_article(article)

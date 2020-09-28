@@ -10,7 +10,7 @@
 
 from first_partial_exercises.ex_2 import Report, print_format
 from lib.menu.epp_menu import Menu
-from lib.inputs import input_int, input_float
+from lib.inputs import input_int, input_float, input_str_non_empty
 
 
 class Article():
@@ -46,6 +46,7 @@ class Custom_Report(Report):
             Init of the father class
         """
         Report.__init__(self)
+        self.articles = []
 
     def show_report(self):
         """
@@ -82,8 +83,8 @@ def main():
     r = Custom_Report()
 
     def handle_add():
-        desc = input("Article Description: ")
-        prod_cost = input_int("Production Cost: ", False)
+        desc = input_str_non_empty("Article Description: ")
+        prod_cost = input_int("Production Cost: ", False, min_val=1, default=1)
         article = Article(desc, prod_cost)
         r.add_article(article)
 
