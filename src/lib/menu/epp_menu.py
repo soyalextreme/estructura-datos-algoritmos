@@ -17,12 +17,11 @@ def print_format_item(val, title):
     print(" {0:^5}  |  {1:^30}".format(val, title))
 
 
-
 class Menu():
     __print_welcome = False
-    __exit_val= 0
+    __exit_val = 0
     __opc = 0
-    __posible_options = [] 
+    __posible_options = []
 
     def __init__(self, opcs, exit_val, welcome=False):
         """
@@ -40,7 +39,6 @@ class Menu():
         self.__exit_val = exit_val
         self.__welcome = welcome
 
-
     def print_opc(self):
         """
             This function prints all the posible options in the menu plus the
@@ -51,10 +49,10 @@ class Menu():
         print("OPTIONS| PLEASE SELECT ONE")
         for item in self.__posible_options:
             print_format_item(item[0], item[1])
-        print_format_item(self.__exit_val, f"{ 'Exit' if self.__welcome else 'Back' }")
+        print_format_item(
+            self.__exit_val, f"{ 'Exit' if self.__welcome else 'Back' }")
         print("=" * 40)
         return input_int("_")
-
 
     def print_welcome(self):
         """
@@ -67,7 +65,6 @@ class Menu():
         print("Estructura de datos y Algoritmos ")
         print("6to Semestre")
         input("Enter to continue")
-
 
     def eval_opc(self):
         """
@@ -87,7 +84,6 @@ class Menu():
         print("WOUPS! select a posible option.")
         input()
 
-
     def still(self, func):
         """
             This function waits for a function to execute and then ends or not
@@ -101,7 +97,6 @@ class Menu():
                 self.exit()
         wrapper()
 
-
     def exit(self):
         """
             The exit function for the menu
@@ -111,7 +106,6 @@ class Menu():
         else:
             print("Going to prev menu")
 
-
     def start(self):
         """
             The starter of the menu.
@@ -119,16 +113,3 @@ class Menu():
         while self.__opc != self.__exit_val:
             self.__opc = self.print_opc()
             self.eval_opc()
-
-
-
-    
-    
-
-
-
-
-    
-
-
-

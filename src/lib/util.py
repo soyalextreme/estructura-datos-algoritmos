@@ -18,7 +18,7 @@ def exit():
     """
     os.system("rm __init__.html")
     print("Bye...")
- 
+
 
 def still():
     """ Checks the input o cancel de menu or no 
@@ -31,4 +31,12 @@ def still():
         print("Good Bye... ")
         return EXIT_VALUE
     clean_screen()
-    return 0   
+    return 0
+
+
+def still_bool(msg="Wanna continue: [y/n]"):
+    res = input(msg)
+    if res.lower() == 'n':
+        return False
+    else:
+        return True

@@ -77,7 +77,7 @@ class Custom_Report(Report):
 
 def main():
     """
-        Main function that handles the excersice 2.
+        Main function that handles the excersice 3.
     """
     r = Custom_Report()
 
