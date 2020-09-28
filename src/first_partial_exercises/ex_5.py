@@ -34,7 +34,7 @@ def selection_client():
         return CLIENTS[0]
 
     i = 0
-    increment = 1
+#    increment = 1
     while s.lower() != "s":
         clean_screen()
         print(CLIENTS[i].name)
@@ -42,10 +42,9 @@ def selection_client():
         if s.lower() == "s":
             continue
         if i == len(CLIENTS) - 1:
-            increment = -1
-        elif i == 0:
-            increment = +1
-        i += increment
+            i = 0
+        else:
+            i += 1
 
     return CLIENTS[i]
 

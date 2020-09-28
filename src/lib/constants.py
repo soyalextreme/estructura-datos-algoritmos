@@ -1,5 +1,5 @@
 """ This file defines the global constants in order to the porject work"""
 
-EXIT_VALUE=11
-PROYECT_STATE=False
-EXCERCISE_STATE=True
+EXIT_VALUE = 11
+PROYECT_STATE = False
+EXCERCISE_STATE = False

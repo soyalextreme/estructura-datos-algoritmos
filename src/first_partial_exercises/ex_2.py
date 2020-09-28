@@ -71,6 +71,9 @@ class Report():
     articles = []
     total = 0
 
+    def __init__(self):
+        self.articles = []
+
     def add_article(self, article):
         """ 
             Function that appeds the a article to the collection

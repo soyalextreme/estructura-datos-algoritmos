@@ -34,6 +34,7 @@ class Ticket(Report):
     def __init__(self, client_name):
         Report.__init__(self)
         self.client_name = client_name
+        self.articles = []
 
     def show_report(self):
         clean_screen()
