@@ -59,7 +59,7 @@ class AcountStatus():
                 print_table_row(
                     [i + 1, "", abs(self.movements[i][0]), self.movements[i][1]])
                 total_retiremts += abs(self.movements[i][0])
-        print_table_row(["Totales", total_deposit,
+        print_table_row(["Total", total_deposit,
                          total_retiremts, self.salary])
 
     def new_movement(self):
@@ -70,8 +70,8 @@ class AcountStatus():
 
             clean_screen()
             print(option.upper())
-            amount = input_float(
-                f"Give me the amount to {option}: ", min_val=20, default=20)
+            amount = round(input_float(
+                f"Give me the amount to {option}: ", min_val=20, default=20), 2)
             round(amount, 3)
             if option.lower() == 'deposit':
                 self.salary += amount
@@ -96,6 +96,7 @@ class AcountStatus():
 
 def main():
     owner_name = input_str_non_empty("Name of the owner of the acount: ")
-    init_salary = input_float("Initial Salary: ", False, min_val=1, default=1)
+    init_salary = round(input_float("Initial Salary: ",
+                                    False, min_val=1, default=1), 2)
     a = AcountStatus(owner_name, init_salary)
     a.new_movement()
