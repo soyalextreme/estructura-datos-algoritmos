@@ -9,14 +9,7 @@
 
 from lib.menu.epp_menu import Menu
 from lib.inputs import input_int, input_float, input_str_non_empty
-
-
-def print_format(l):
-    chain = ""
-    for i in l:
-        chain += "|  {0:^25}  |".format(i)
-    print(chain)
-    print("*" * (len(l) * 35))
+from lib.prints import print_table_row
 
 
 class Article():
@@ -47,9 +40,9 @@ class Article():
 
     def production_cost(self):
         """
-            Calculation of the production cost.
+            Calculation of the productin cost.
         """
-        return (self.amount_produced * self.extra_material_cost) + self.base_cost
+        return round(self.amount_produced * self.extra_material_cost + self.base_cost, 2)
 
 
 class Report():
@@ -70,6 +63,7 @@ class Report():
             Function that appeds the a article to the collection
         """
         self.articles.append(article)
+        print("Ready! Product Added")
 
     def show_report(self):
         """
@@ -78,18 +72,18 @@ class Report():
             showing the total cost of production of all the productos
         """
         self.total = 0
-        print_format(["Article", "Amount Produced", "Factor cost",
-                      "Base Cost", "Production Cost"])
+        print_table_row(["Article", "Amount Produced", "Factor cost",
+                         "Base Cost", "Production Cost"])
         if len(self.articles) == 0:
             print("No articles added, Please Add at least one")
             return 0
 
         for article in self.articles:
-            print_format([article.description, article.amount_produced,
-                          article.extra_material_cost, article.base_cost, article.production_cost()])
+            print_table_row([article.description, article.amount_produced,
+                             article.extra_material_cost, article.base_cost, article.production_cost()])
             self.total += article.production_cost()
 
-        print_format([
+        print_table_row([
             f"Total Articles {len(self.articles)}", "", "", "", self.total])
 
 
@@ -102,7 +96,7 @@ def main():
     def handle_add():
         desc = input_str_non_empty("Article Description: ")
         amount = input_int("Article Amount: ", False, min_val=1, default=1)
-        ex_factor = input_float("Article Factor Cost: ", False)
+        ex_factor = round(input_float("Article Factor Cost: ", False), 2)
         base_cost = input_int("Article base cost: ",
                               False, min_val=1, default=1)
 
@@ -114,5 +108,5 @@ def main():
         (2, "REPORT", r.show_report),
     ]
 
-    m = Menu(ARTICLE_REPORT_OPC, exit_val=3)
+    m = Menu(ARTICLE_REPORT_OPC, exit_val=3, still=False)
     m.start()

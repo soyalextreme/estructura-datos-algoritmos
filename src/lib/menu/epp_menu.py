@@ -22,8 +22,9 @@ class Menu():
     __exit_val = 0
     __opc = 0
     __posible_options = []
+    __still = True
 
-    def __init__(self, opcs, exit_val, welcome=False):
+    def __init__(self, opcs, exit_val, welcome=False, still=True):
         """
             Constructor of the class Menu
             Params:
@@ -38,6 +39,7 @@ class Menu():
         self.__posible_options = opcs
         self.__exit_val = exit_val
         self.__welcome = welcome
+        self.__still = still
 
     def print_opc(self):
         """
@@ -79,7 +81,11 @@ class Menu():
             elif item[0] == self.__opc:
                 # executing the opc funct
                 clean_screen()
-                self.still(item[2])
+                if self.__still == True:
+                    self.still(item[2])
+                else:
+                    item[2]()
+                    input("_")
                 return 0
         print("WOUPS! select a posible option.")
         input()

@@ -70,5 +70,6 @@ def input_str_non_empty(msg):
     string = ""
     while len(string) == 0:
         string = input(msg)
-        clean_screen()
+        if len(string) == 0:
+            clean_screen()
     return string
