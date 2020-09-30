@@ -12,14 +12,19 @@ from lib.decorators import cronometer
 
 
 def pascal(j, i):
+    """
+        Calculates the pascal number depending on a postion
+    """
     if i == j or i == 1:
         return 1
     return pascal(j - 1, i - 1) + pascal(j - 1, i)
 
 
 def draw_triangle(n, m=[]):
+    """
+    Draws the Pascal triangle step by step
+    """
 
-    # dibujo
     def draw():
         clean_screen()
         for column in m:
@@ -28,7 +33,6 @@ def draw_triangle(n, m=[]):
             print()
         sleep(0.5)
 
-    # generar
     for j in range(n):
         m.append([])
         for i in range(j + 1):
@@ -42,9 +46,12 @@ def draw_triangle(n, m=[]):
 
 @cronometer
 def main():
+    """
+        Main function Handler
+    """
     clean_screen()
     row = input_int("Row of the digit to search: ", False)
     column = input_int("Column of the digit to search: ", False, max_val=row)
     r = pascal(row, column)  # 6
-    input(f"the digit in position [{row},{column}] is {r}")
     draw_triangle(row)
+    print(f"the digit in position [{row},{column}] is {r}")
