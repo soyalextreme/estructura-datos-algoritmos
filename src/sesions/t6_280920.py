@@ -14,6 +14,7 @@ def sum_digits(num):
     """
         Sums all the digits of a integer number
     """
+    print("*")
     if num // 10 == 0:
         return num
     return num % 10 + sum_digits(num // 10)
