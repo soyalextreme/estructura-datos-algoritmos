@@ -7,9 +7,12 @@ from lib.constants import EXIT_VALUE
 
 def clean_screen():
     """ Cleans the terminal depending on the operating system """
-    if os.uname().sysname == "Windows":
+    try:
+        if os.uname().sysname == "Windows":
+            os.system("cls")
+        os.system("clear")
+    except:
         os.system("cls")
-    os.system("clear")
 
 
 def exit():
