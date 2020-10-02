@@ -69,7 +69,6 @@ class Group():
         student = self.student_form()
         self.students.append(student)
         print(f"{student.name} agregado correctamente")
-        print(self.students)
 
     def student_form(self):
         name = input_str_non_empty("Student Name: ")
