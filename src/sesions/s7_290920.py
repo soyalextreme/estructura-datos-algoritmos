@@ -11,6 +11,7 @@ from lib.inputs import input_int
 from lib.decorators import cronometer
 
 
+@cronometer
 def pascal(j, i):
     """
         Calculates the pascal number depending on a postion
@@ -31,7 +32,7 @@ def draw_triangle(n, m=[]):
             for item in column:
                 print(f"| {item} |", end="")
             print()
-        sleep(0.5)
+        # sleep(0.5)
 
     for j in range(n):
         m.append([])

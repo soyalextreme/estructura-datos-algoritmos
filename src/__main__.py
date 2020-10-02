@@ -1,7 +1,7 @@
 from lib.menu.main_menu import main_menu
 from lib.constants import PROYECT_STATE, EXCERCISE_STATE
 # from calculus_excersice.main import zone_a as main
-from sesions.s7_290920 import main
+from sesions.s8_021020 import hola
 from first_partial_exercises import main as main_ex
 from calculus_excersice.main import zone_b
 
@@ -12,4 +12,4 @@ if __name__ == "__main__":
         main_ex()  # estructura de datos
         # zone_b()    # calculo vectorial
     else:
-        main()
+        hola()
