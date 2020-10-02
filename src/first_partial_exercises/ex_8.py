@@ -1,4 +1,14 @@
 
+"""
+    30-09-2020
+    Excersice 8
+    Estructura de Datos y algoritmos
+    STUDENTS CALIF
+    6to Semestre
+    Alejandro AS
+"""
+
+
 from lib.inputs import input_str_non_empty, input_float
 from lib.prints import print_table_row
 from lib.menu.epp_menu import Menu
