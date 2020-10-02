@@ -33,7 +33,6 @@ class AcountStatus():
             s = input("[s] To select\n_").lower()
             if s == 's':
                 continue
-
             if i == len(options) - 1:
                 i = 0
             else:
@@ -44,23 +43,23 @@ class AcountStatus():
         clean_screen()
         print(f"""
                                                 Acount Status
-              Name: {self.owner_name}                
-              Initial Salary: {self.initial_salary}
+              Name: {self.owner_name}
+              Initial Salary: $ {self.initial_salary}
         """)
         print_table_row(["Movement", "Deposit", "Retirement", "Salary"])
         total_deposit = 0
         total_retiremts = 0
         for i in range(len(self.movements)):
             if self.movements[i][0] > 0:
-                print_table_row([1, self.movements[i][0],
-                                 "", self.movements[i][1]])
+                print_table_row([i + 1, f"$ {self.movements[i][0]}",
+                                 "", f"$ {self.movements[i][1]}"])
                 total_deposit += self.movements[i][0]
             else:
                 print_table_row(
-                    [i + 1, "", abs(self.movements[i][0]), self.movements[i][1]])
+                    [i + 1, "", f"$ {abs(self.movements[i][0])}", f"$ {self.movements[i][1]}"])
                 total_retiremts += abs(self.movements[i][0])
-        print_table_row(["Total", total_deposit,
-                         total_retiremts, self.salary])
+        print_table_row(["Total", f"$ {total_deposit}",
+                         f"$ {total_retiremts}", f"$ {self.salary}"])
 
     def new_movement(self):
         ready = ''
@@ -76,18 +75,18 @@ class AcountStatus():
             if option.lower() == 'deposit':
                 self.salary += amount
                 self.movements.append((amount, self.salary))
-                print(f"Deposit of {amount}")
+                print(f"Deposit of $ {amount}")
             else:
                 if self.salary - amount > 0:
                     self.salary -= amount
                     self.movements.append((-1 * amount, self.salary))
-                    print(f"Retirement of {amount}")
+                    print(f"Retirement of $ {amount}")
                 else:
-                    print("Ups! Invalid Transaciton not enough money")
+                    print("Ups! Invalid Transaction not enough money")
             input("_")
 
             clean_screen()
-            print(f"Salary: {self.salary}")
+            print(f"Salary: $ {self.salary}")
             ready = input(
                 "[r] To exit and print the report\n[Enter] For new Transaction\n_")
 
