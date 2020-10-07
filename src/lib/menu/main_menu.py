@@ -4,16 +4,22 @@ from lib.inputs import input_int
 from lib.prints import print_title
 from lib.util import exit, still, clean_screen
 from lib.constants import EXIT_VALUE
-from lib.implements import triangle_area, cuadratic_ecuations, average_grades, max_number, max_random_num 
+from lib.implements import triangle_area, cuadratic_ecuations, average_grades, max_number, max_random_num
 from lib.big_implements.cyclode_function import main as cyclode_function
-from lib.big_implements.exceptions import run_custom_exception  
+from lib.big_implements.exceptions import run_custom_exception
 from lib.big_implements.exceptions import run_manage_custom_exception
 from lib.big_implements.determinat_matrix import menu as determinat_menu
 from lib.big_implements.parametric_function import main as parametric_fun
+from sesions.s3_110920 import random_higher_num
+from sesions.s4_150920 import menu as sesion4
+from sesions.s7_290920 import main as pascal
+from sesions.s8_021020 import main as cronometer_test
+from sesions.t5_240920 import main as recursion
+from sesions.t6_280920 import main as sum_digits
 
 
 def main_menu():
-    """ Main menu function program"""  
+    """ Main menu function program"""
     clean_screen()
     opc = 0
     while opc != EXIT_VALUE:
@@ -30,7 +36,13 @@ def main_menu():
         8. Custom Error - Warning crash the program
         9. Custom Error managed - Exception catched
         10. Determinat Matrix
-        11. Exit
+        11. Random Higher Numbers
+        12. Sesion 4 Clase
+        13. Pascal Algorithm
+        14. Cronometer test
+        15. Fibonacci Recursion and Factorial Recursion
+        16. Sum the digits of a string 
+        17. EXIT
         """)
 
         # Input
@@ -56,7 +68,7 @@ def main_menu():
             opc = still()
         elif opc == 6:
             parametric_fun()
-            opc = still() 
+            opc = still()
         elif opc == 7:
             cyclode_function()
             opc = still()
@@ -69,9 +81,27 @@ def main_menu():
         elif opc == 10:
             determinat_menu()
             opc = still()
+        elif opc == 11:
+            s = input_int("Size of the random list: ",
+                          allow_negative=False, min_val=3, default=2)
+            random_higher_num(s)
+            opc = still()
+        elif opc == 12:
+            sesion4()
+            opc = still()
+        elif opc == 13:
+            pascal()
+            opc = still()
+        elif opc == 14:
+            cronometer_test()
+            opc = still()
+        elif opc == 15:
+            recursion()
+            opc = still()
+        elif opc == 16:
+            sum_digits()
+            opc = still()
         elif opc == EXIT_VALUE:
             exit()
         else:
             print("Option No valid Check de menu")
-        
-
