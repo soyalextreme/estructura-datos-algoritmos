@@ -2,6 +2,7 @@ from sorting.bubble_sort import BubbleSort
 from sorting.insertion_sort import InsertionSort
 from sorting.selection_sort import SelectionSort
 from sorting.shell_sort import ShellSort
+from sorting.quick_sort import QuickSort
 from lib.util import random_list
 from time import sleep
 
@@ -39,7 +40,14 @@ def test_shell_sort():
     s.downward()
     s.print_results()
 
+def test_quick_sort():
+    l_ran = random_list()
+    q = QuickSort(l_ran)
+    q.upward()
+    q.print_results()
+    q.downward()
+    q.print_results()
 
 if __name__ == "__main__":
-    test_shell_sort()
+    test_quick_sort()
     
