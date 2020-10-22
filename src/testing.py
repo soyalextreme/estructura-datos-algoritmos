@@ -1,9 +1,10 @@
 from sorting.bubble_sort import BubbleSort
+from sorting.insertion_sort import InsertionSort
 from lib.util import random_list
 from time import sleep
 
 
-def testing():
+def testing_bubblesort():
     l_ran = random_list()
     b = BubbleSort(l_ran)
     b.upward()
@@ -12,4 +13,16 @@ def testing():
     b.print_results()
 
 
-testing()
+def testing_insertionsort():
+    l_ran = random_list()
+    i = InsertionSort(l_ran)
+    i.upward()
+    i.print_results()
+    i.downward()
+    i.print_results()
+
+
+
+if __name__ == "__main__":
+    testing_insertionsort()
+    
