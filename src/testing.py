@@ -4,10 +4,10 @@ from sorting.selection_sort import SelectionSort
 from sorting.shell_sort import ShellSort
 from sorting.quick_sort import QuickSort
 from lib.util import random_list
-from time import sleep
+from lib.inputs import input_int
 
 
-def testing_bubblesort():
+def testing_bubble_sort():
     l_ran = random_list()
     b = BubbleSort(l_ran)
     b.upward()
@@ -16,7 +16,7 @@ def testing_bubblesort():
     b.print_results()
 
 
-def testing_insertionsort():
+def testing_insertion_sort():
     l_ran = random_list()
     i = InsertionSort(l_ran)
     i.upward()
@@ -24,7 +24,7 @@ def testing_insertionsort():
     i.downward()
     i.print_results()
 
-def testing_selectionsort():
+def testing_selection_sort():
     l_ran = random_list()
     s = SelectionSort(l_ran)
     s.upward()
@@ -41,7 +41,10 @@ def test_shell_sort():
     s.print_results()
 
 def test_quick_sort():
-    l_ran = random_list()
+    size = input_int("Size of the random List: ", allow_negative=False, min_val=2)
+    min_val = input_int("Min value to gen: ")
+    max_val = input_int("Max value to gen: ")
+    l_ran = random_list(low=min_val, high=max_val, length=size)
     q = QuickSort(l_ran)
     q.upward()
     q.print_results()

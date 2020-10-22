@@ -2,22 +2,30 @@ from lib.util import clean_screen
 
 
 def input_int(msg, allow_negative=True, max_val=None, min_val=None,
-              default=0):
+              default=None):
     """ Recibes input and handles error returning 0 by error default """
-    try:
-        n = int(input(msg))
 
-        if not allow_negative:
-            n = abs(n)
-        if max_val is not None and n > max_val:
-            n = max_val
+    while True:
+        try:
+            n = int(input(msg))
 
-        if min_val is not None and n < min_val:
-            n = min_val
+            if not allow_negative:
+                n = abs(n)
+            if max_val is not None and n > max_val:
+                n = max_val
 
-        return n
-    except ValueError:
-        return default
+            if min_val is not None and n < min_val:
+                n = min_val
+
+            return n
+            break
+        except ValueError:
+            if default is not None:
+                return default
+                break
+            
+
+
 
 
 def input_number_list(type="item", allow_negative_num=True, max_n=None, min_n=None):
