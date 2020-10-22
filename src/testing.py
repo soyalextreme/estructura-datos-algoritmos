@@ -5,7 +5,7 @@ from sorting.shell_sort import ShellSort
 from sorting.quick_sort import QuickSort
 from lib.util import random_list
 from lib.inputs import input_int
-
+from lib.decorators import cronometer
 
 def testing_bubble_sort():
     l_ran = random_list()
@@ -51,6 +51,37 @@ def test_quick_sort():
     q.downward()
     q.print_results()
 
-if __name__ == "__main__":
-    test_quick_sort()
+
+def comparison():
+    print("Comparing nlogn average complexity to n^2 complexity")
+    print("In a list of 2500, 5000, 10000")
+    rand_l_100 = random_list(-2500, 2500, 2500)
+    rand_l_1000 = random_list(-5000, 5000, 5000)
+    rand_l_2500 = random_list(-10000, 10000, 10000)
+    test_1_q = QuickSort(rand_l_100)
+    test_2_q = QuickSort(rand_l_1000)
+    test_3_q = QuickSort(rand_l_2500)
+    test_1_b = BubbleSort(rand_l_100)
+    test_2_b = BubbleSort(rand_l_1000)
+    test_3_b = BubbleSort(rand_l_2500)
+
+    @cronometer
+    def test_ob(obj):
+        obj.upward()
     
+
+    print("Quick sort Times")
+    test_ob(test_1_q)
+    test_ob(test_2_q)
+    test_ob(test_3_q)
+
+    print("Bubble sort Times")
+    test_ob(test_1_b)
+    test_ob(test_2_b)
+    test_ob(test_3_b)
+    
+
+
+
+if __name__ == "__main__":
+    comparison() 
