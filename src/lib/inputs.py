@@ -20,6 +20,7 @@ def input_int(msg, allow_negative=True, max_val=None, min_val=None,
             return n
             break
         except ValueError:
+            clean_screen()
             if default is not None:
                 return default
                 break
