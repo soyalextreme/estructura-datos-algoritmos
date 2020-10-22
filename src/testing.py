@@ -1,5 +1,6 @@
 from sorting.bubble_sort import BubbleSort
 from sorting.insertion_sort import InsertionSort
+from sorting.selection_sort import SelectionSort
 from lib.util import random_list
 from time import sleep
 
@@ -21,8 +22,16 @@ def testing_insertionsort():
     i.downward()
     i.print_results()
 
+def testing_selectionsort():
+    l_ran = random_list()
+    s = SelectionSort(l_ran)
+    s.upward()
+    s.print_results()
+    s.downward()
+    s.print_results()
+
 
 
 if __name__ == "__main__":
-    testing_insertionsort()
+    testing_selectionsort()
     

@@ -49,3 +49,4 @@ def still_bool(msg="Wanna continue: [y/n]"):
 def random_list(low=0, high=10, length=10):
     """ Function that creates a random list """
     return [random.randint(low, high) for _ in range(length)]
+    
