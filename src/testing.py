@@ -3,6 +3,7 @@ from sorting.insertion_sort import InsertionSort
 from sorting.selection_sort import SelectionSort
 from sorting.shell_sort import ShellSort
 from sorting.quick_sort import QuickSort
+from sorting.merge_sort import MergeSort 
 from lib.util import random_list
 from lib.inputs import input_int
 from lib.decorators import cronometer
@@ -82,6 +83,16 @@ def comparison():
     
 
 
+def test_merge():
+    rand_list = random_list(-10, 10, 10)
+    print(rand_list)
+    MergeSort.solve(rand_list)
+    print(rand_list)
+    
+
+
+
 
 if __name__ == "__main__":
-    comparison() 
+    # comparison() 
+    test_merge()
