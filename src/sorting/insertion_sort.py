@@ -5,6 +5,7 @@
     22 - October - 2020
 """
 from sorting.sort import SortMethod
+from lib.decorators import cronometer
 
 
 class InsertionSort(SortMethod):
@@ -17,7 +18,7 @@ class InsertionSort(SortMethod):
         self.l = l
         self.l_sorted = l[:]
         SortMethod.__init__(self, self.l, self.l_sorted, "Insertion Sort")
-    
+
     def upward(self):
         """
             Sorting Method for ascendent
@@ -28,9 +29,9 @@ class InsertionSort(SortMethod):
             while j > 0 and l[j - 1] > l[j]:
                 l[j], l[j - 1] = l[j - 1], l[j]
                 j -= 1
-        return l 
-                
+        return l
 
+        # Introduction to algorithms thomas cormel
 
     def downward(self):
         """
@@ -42,5 +43,4 @@ class InsertionSort(SortMethod):
             while j > 0 and l[j - 1] < l[j]:
                 l[j], l[j - 1] = l[j - 1], l[j]
                 j -= 1
-        return l 
- 
+        return l

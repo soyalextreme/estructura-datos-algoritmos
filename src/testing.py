@@ -1,60 +1,71 @@
+"""
+    TESTING SCRIPTS
+    Alejandro Andrade Soriano
+    02/11/2020
+"""
+
+
 from sorting.bubble_sort import BubbleSort
 from sorting.insertion_sort import InsertionSort
 from sorting.selection_sort import SelectionSort
 from sorting.shell_sort import ShellSort
 from sorting.quick_sort import QuickSort
-from sorting.merge_sort import MergeSort 
+from sorting.merge_sort import MergeSort
+from sorting.heap_sort import HeapSort
 from lib.util import random_list
 from lib.inputs import input_int
 from lib.decorators import cronometer
 
-def testing_bubble_sort():
-    l_ran = random_list()
-    b = BubbleSort(l_ran)
-    b.upward()
-    b.print_results()
-    b.downward()
-    b.print_results()
 
-
-def testing_insertion_sort():
-    l_ran = random_list()
-    i = InsertionSort(l_ran)
-    i.upward()
-    i.print_results()
-    i.downward()
-    i.print_results()
-
-def testing_selection_sort():
-    l_ran = random_list()
-    s = SelectionSort(l_ran)
-    s.upward()
-    s.print_results()
-    s.downward()
-    s.print_results()
-
-def test_shell_sort():
-    l_ran = random_list()
-    s = ShellSort(l_ran)
-    s.upward()
-    s.print_results()
-    s.downward()
-    s.print_results()
-
-def test_quick_sort():
-    size = input_int("Size of the random List: ", allow_negative=False, min_val=2)
+def test_sort(SortClass):
+    size = input_int("Size of the random List: ",
+                     allow_negative=False, min_val=2)
     min_val = input_int("Min value to gen: ")
     max_val = input_int("Max value to gen: ")
+    ascendent = input_int("0 = Ascendent\n1 = Descendent\nDefault = 0\n_",
+                          allow_negative=False, max_val=1, min_val=0, default=0)
     l_ran = random_list(low=min_val, high=max_val, length=size)
-    q = QuickSort(l_ran)
-    q.upward()
-    q.print_results()
-    q.downward()
-    q.print_results()
+
+    s = SortClass(l_ran)
+
+    if ascendent == 1:
+        s.downward()
+    else:
+        s.upward()
+
+    s.print_results()
+
+
+def test_bubble_sort():
+    test_sort(BubbleSort)
+
+
+def test_quick_sort():
+    test_sort(QuickSort)
+
+
+def test_insertion_sort():
+    test_sort(InsertionSort)
+
+
+def test_selection_sort():
+    test_sort(SelectionSort)
+
+
+def test_shell_sort():
+    test_sort(ShellSort)
+
+
+def test_merge_sort():
+    test_sort(MergeSort)
+
+
+def test_heap_sort():
+    test_sort(HeapSort)
 
 
 def comparison():
-    print("Comparing nlogn average complexity to n^2 complexity")
+    print("Comparing n log n average complexity to n^2 complexity")
     print("In a list of 2500, 5000, 10000")
     rand_l_100 = random_list(-2500, 2500, 2500)
     rand_l_1000 = random_list(-5000, 5000, 5000)
@@ -69,7 +80,6 @@ def comparison():
     @cronometer
     def test_ob(obj):
         obj.upward()
-    
 
     print("Quick sort Times")
     test_ob(test_1_q)
@@ -80,19 +90,8 @@ def comparison():
     test_ob(test_1_b)
     test_ob(test_2_b)
     test_ob(test_3_b)
-    
-
-
-def test_merge():
-    rand_list = random_list(-10, 10, 10)
-    print(rand_list)
-    MergeSort.solve(rand_list)
-    print(rand_list)
-    
-
-
 
 
 if __name__ == "__main__":
-    # comparison() 
-    test_merge()
+    # comparison()
+    print("TESTING ANY SCRIPT")

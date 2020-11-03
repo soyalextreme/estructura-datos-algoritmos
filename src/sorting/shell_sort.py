@@ -4,6 +4,7 @@
     Alejandro AS
     22 - October - 2020
 """
+
 from sorting.sort import SortMethod
 
 
@@ -16,8 +17,8 @@ class ShellSort(SortMethod):
         """
         self.l = l
         self.l_sorted = l[:]
-        SortMethod.__init__(self, self.l, self.l_sorted,"Shell Sort Algorithm")
-    
+        SortMethod.__init__(self, self.l, self.l_sorted,
+                            "Shell Sort Algorithm")
 
     def upward(self, gap=-1):
         """ 
@@ -37,9 +38,8 @@ class ShellSort(SortMethod):
             while j > 0 and l[j] < l[j - gap]:
                 l[j], l[j - gap] = l[j - gap], l[j]
                 j -= 1
-        
-        return self.upward(gap)
 
+        return self.upward(gap)
 
     def downward(self, gap=-1):
         """
@@ -58,7 +58,5 @@ class ShellSort(SortMethod):
             while j > 0 and l[j] > l[j - gap]:
                 l[j], l[j - gap] = l[j - gap], l[j]
                 j -= 1
-        
+
         return self.downward(gap)
-
-

@@ -1,38 +1,74 @@
+""" 
+    Heap sort class Algorithm 
+    02/11/2020
+    Alejandro AS
+"""
+from sorting.sort import SortMethod
 
 
+class HeapSort(SortMethod):
 
-class HeapSort:
+    def __init__(self, l):
+        """
+            L => List of real numbers
+        """
+        self.l = l
+        self.l_sorted = l[:]
+        SortMethod.__init__(self, l, self.l_sorted, "Heap Sort")
+
+    def upward(self):
+        l = self.l_sorted
+        n = len(l)
+
+        # build heap
+        for i in range(n//2 - 1, -1, -1):
+            HeapSort.max_heapify(l, n, i)
+
+        for j in range(n - 1, 0, -1):
+            # swap values
+            l[0], l[j] = l[j], l[0]
+            HeapSort.max_heapify(l, j, 0)
+
+    def downward(self):
+        l = self.l_sorted
+        n = len(l)
+        # build heap
+        for i in range(n//2 - 1, -1, -1):
+            HeapSort.min_heapify(l, n, i)
+
+        for j in range(n - 1, 0, -1):
+            # swap values
+            l[0], l[j] = l[j], l[0]
+            HeapSort.min_heapify(l, j, 0)
 
     @staticmethod
-    def heapify(arr, n, i):
-        largest = i
-        l = i * 2 + 1 
-        r = i * 2 + 2
+    def min_heapify(arr, n, i):
+        minimun = i
+        L = i * 2 + 1
+        R = i * 2 + 2
 
-        if l < n and arr[i] < arr[l]:
-            largest = l
+        if L < n and arr[L] < arr[i]:
+            minimun = L
 
-        if r < n and arr[largest] < arr[r]:
-            largest = r
-        
-        if largest != i:
-            arr[i], arr[largest] = arr[largest], arr[i]
-            HeapSort.heapify(arr, n, largest)
+        if R < n and arr[R] < arr[minimun]:
+            minimun = R
 
+        if i != minimun:
+            arr[minimun], arr[i] = arr[i], arr[minimun]
+            HeapSort.min_heapify(arr, n, minimun)
 
     @staticmethod
-    def solve(arr):
-        n = len(arr)
+    def max_heapify(arr, n, i):
+        maximum = i
+        L = i * 2 + 1
+        R = i * 2 + 2
 
-        for i in range(n //2 -1 , -1, -1):
-            HeapSort.heapify(arr, n, i)
+        if L < n and arr[L] > arr[i]:
+            maximum = L
 
-        for i in range(n - 1, 0, -1):
-            arr[i], arr[0] = arr[0], arr[i]
-            HeapSort.heapify(arr, i, 0)
+        if R < n and arr[R] > arr[maximum]:
+            maximum = R
 
-import random
-rand = [random.randint(1, 100) for _ in range(10000000)]
-# print(rand)
-HeapSort.solve(rand)
-# print(rand)
+        if maximum != i:
+            arr[i], arr[maximum] = arr[maximum], arr[i]
+            HeapSort.max_heapify(arr, n, maximum)

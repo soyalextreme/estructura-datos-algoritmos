@@ -35,11 +35,10 @@ class Menu():
         """
         clean_screen()
         if welcome == True:
-            self.print_welcome()
+            input(welcome_msg)
         self.__posible_options = opcs
         self.__exit_val = exit_val
         self.__welcome = welcome
-        self.__welcome_msg = welcome_msg
         self.__still = still
 
     def print_opc(self):
@@ -55,14 +54,7 @@ class Menu():
         print_format_item(
             self.__exit_val, f"{ 'Exit' if self.__welcome else 'Back' }")
         print("=" * 40)
-        return input_int("_")
-
-    def print_welcome(self):
-        """
-            This prints the welcome message for the first time the program
-            boots.
-        """
-        print(self.__welcome_msg)
+        return input_int("_", default=0, allow_negative=False)
 
     def eval_opc(self):
         """

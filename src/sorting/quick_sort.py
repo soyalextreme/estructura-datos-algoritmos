@@ -4,8 +4,8 @@
     Alejandro AS
     22-October-2020
 """
-from sorting.sort import SortMethod
 
+from sorting.sort import SortMethod
 
 
 class QuickSort(SortMethod):
@@ -31,14 +31,14 @@ class QuickSort(SortMethod):
         j = low - 1
         for i in range(low, high):
             if l[i] <= pivot and asc is True:
-                j +=1
+                j += 1
                 l[j], l[i] = l[i], l[j]
             elif l[i] >= pivot and asc is False:
-                j +=1
+                j += 1
                 l[j], l[i] = l[i], l[j]
         l[high], l[j + 1] = l[j + 1], l[high]
         return j + 1
-            
+
     def upward(self, low=None, high=None):
         """
             Quick sort ascendent 
@@ -66,5 +66,3 @@ class QuickSort(SortMethod):
             pivot = self.partition(low, high, False)
             self.downward(low, pivot - 1)
             self.downward(pivot + 1, high)
-
-
