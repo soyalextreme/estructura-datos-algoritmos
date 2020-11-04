@@ -17,6 +17,10 @@ from lib.inputs import input_int
 from lib.decorators import cronometer
 
 
+# lists
+from listas.lista_ligada_simple import SimpleListBound
+
+
 def test_sort(SortClass):
     size = input_int("Size of the random List: ",
                      allow_negative=False, min_val=2)
@@ -95,3 +99,16 @@ def comparison():
 if __name__ == "__main__":
     # comparison()
     print("TESTING ANY SCRIPT")
+    l = SimpleListBound()
+    l.appped(1)
+    l.appped(2)
+    l.appped(3)
+    l.appped(4)
+    l.appped(5)
+    l.appped(6)
+    l.appped("Hola mundo")
+    l.appped(True)
+    n = l.size()
+    print(n)
+
+    print(l)
