@@ -18,7 +18,7 @@ from lib.decorators import cronometer
 
 
 # lists
-from listas.lista_ligada_simple import SimpleListBound
+from lists.simple_linked_list import SimpleLinkedList
 
 
 def test_sort(SortClass):
@@ -32,11 +32,17 @@ def test_sort(SortClass):
 
     s = SortClass(l_ran)
 
-    if ascendent == 1:
-        s.downward()
-    else:
-        s.upward()
+    @cronometer
+    def timer():
+        if ascendent == 1:
+            s.downward()
+        else:
+            s.upward()
 
+    print("Time to order: if the list is too large this should take a while")
+    timer()
+    print("FINISH!")
+    input("_Enter to see the results")
     s.print_results()
 
 
@@ -97,18 +103,21 @@ def comparison():
 
 
 if __name__ == "__main__":
-    # comparison()
-    print("TESTING ANY SCRIPT")
-    l = SimpleListBound()
-    l.appped(1)
-    l.appped(2)
-    l.appped(3)
-    l.appped(4)
-    l.appped(5)
-    l.appped(6)
-    l.appped("Hola mundo")
+    l = SimpleLinkedList()
+
+    l.appped("Alejandro")
     l.appped(True)
-    n = l.size()
-    print(n)
+    l.appped(21)
+    l.appped(1.74)
+
+    n = l.get(1)
+
+    sub_l = SimpleLinkedList()
+    sub_l.prepend(18)
+    last = sub_l.last()
+    first = sub_l.first()
+    sub_l.appped(10)
+    l.prepend(sub_l)
+    sub_l.appped("Hola")
 
     print(l)

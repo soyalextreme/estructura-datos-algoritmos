@@ -15,7 +15,7 @@ def sorting_menu():
 
 
 def init_menu():
-    m = Menu(MAIN_OPC, exit_val=10, still=False,
+    m = Menu(MAIN_OPC, exit_val=2, still=False,
              welcome=True, welcome_msg="Parcial 2\nESTRUCTURA DE DATOS\nALEJANDRO AS\n\nenter to continue")
     m.start()
 

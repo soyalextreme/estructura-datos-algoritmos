@@ -20,7 +20,7 @@ class SortMethod:
     def print_results(self):
         clean_screen()
         string_chain = f"{self.desc.upper()}\nUnsorted:\n{self.l}\nSorted:\n{self.l_sorted}"
-        input(string_chain)
+        print(string_chain)
 
     def upward(self):
         clean_screen()
