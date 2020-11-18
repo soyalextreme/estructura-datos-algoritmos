@@ -6,7 +6,7 @@
 
 from lib.menu import Menu
 
-from testing import test_bubble_sort, test_insertion_sort, test_selection_sort, test_shell_sort, test_quick_sort, test_heap_sort, test_merge_sort, comparison
+from testing import test_bubble_sort, test_insertion_sort, test_selection_sort, test_shell_sort, test_quick_sort, test_heap_sort, test_merge_sort, comparison, test_bubble_sort_linked
 
 
 def sorting_menu():
@@ -15,12 +15,22 @@ def sorting_menu():
 
 
 def init_menu():
-    m = Menu(MAIN_OPC, exit_val=2, still=False,
+    m = Menu(MAIN_OPC, exit_val=3, still=False,
              welcome=True, welcome_msg="Parcial 2\nESTRUCTURA DE DATOS\nALEJANDRO AS\n\nenter to continue")
     m.start()
 
 
-MAIN_OPC = [(1, "Sorting Methods", sorting_menu), ]
+def sorting_menu_linked():
+    m = Menu(SORTING_LINKED_OPC, exit_val=2, welcome=False, still=True)
+    m.start()
+
+
+MAIN_OPC = [(1, "Sorting Methods", sorting_menu),
+            (2, "Sorting Methods with Linked List", sorting_menu_linked)]
+
+
+SORTING_LINKED_OPC = [
+    (1, "Bubble Sort Linked List", test_bubble_sort_linked), ]
 
 
 SORTING_OPC = [(1, "Bubble Sort", test_bubble_sort),

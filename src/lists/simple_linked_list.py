@@ -13,7 +13,7 @@ class SimpleLinkedList:
         self.__last = None
         self.__size = 0
 
-    def appped(self, val):
+    def append(self, val):
         new_node = Node(val)
         if self.__first is None and self.__last is None:
             self.__first = new_node
@@ -111,6 +111,20 @@ class SimpleLinkedList:
             self.__first = new_node
 
         self.__size += 1
+
+    def copy(self, node=False, l=None):
+        if node is False:
+            node = self.__first
+
+        if l is None:
+            l = SimpleLinkedList()
+
+        l.append(node.data)
+
+        if self.__first is None or node.next is None:
+            return l
+
+        return self.copy(node=node.next, l=l)
 
     def __val_index(self, idx):
         if idx > self.size() - 1 or idx < 0:

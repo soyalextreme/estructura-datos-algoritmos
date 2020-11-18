@@ -12,23 +12,34 @@ from sorting.shell_sort import ShellSort
 from sorting.quick_sort import QuickSort
 from sorting.merge_sort import MergeSort
 from sorting.heap_sort import HeapSort
+
+from sorting.bubble_sort_linked import BubbleSortLinked
+
+
 from lib.util import random_list
 from lib.inputs import input_int
 from lib.decorators import cronometer
-
+from lists.simple_linked_list import SimpleLinkedList
+from lists.support_functions import LinkedList as LinkedListSup
 
 # lists
 from lists.simple_linked_list import SimpleLinkedList
 
 
-def test_sort(SortClass):
+def test_sort(SortClass, linked=False):
     size = input_int("Size of the random List: ",
                      allow_negative=False, min_val=2)
     min_val = input_int("Min value to gen: ")
     max_val = input_int("Max value to gen: ")
     ascendent = input_int("0 = Ascendent\n1 = Descendent\nDefault = 0\n_",
                           allow_negative=False, max_val=1, min_val=0, default=0)
-    l_ran = random_list(low=min_val, high=max_val, length=size)
+
+    if linked == False:
+        l_ran = random_list(low=min_val, high=max_val, length=size)
+    else:
+        l = SimpleLinkedList()
+        l_ran = LinkedListSup.fit_random(
+            n_elements=size, l=l, low=min_val, high=max_val)
 
     s = SortClass(l_ran)
 
@@ -74,6 +85,15 @@ def test_heap_sort():
     test_sort(HeapSort)
 
 
+"""
+    SORTING METHODS WITH LINKED LISTS
+"""
+
+
+def test_bubble_sort_linked():
+    test_sort(BubbleSortLinked, linked=True)
+
+
 def comparison():
     print("Comparing n log n average complexity to n^2 complexity")
     print("In a list of 2500, 5000, 10000")
@@ -103,21 +123,4 @@ def comparison():
 
 
 if __name__ == "__main__":
-    l = SimpleLinkedList()
-
-    l.appped("Alejandro")
-    l.appped(True)
-    l.appped(21)
-    l.appped(1.74)
-
-    n = l.get(1)
-
-    sub_l = SimpleLinkedList()
-    sub_l.prepend(18)
-    last = sub_l.last()
-    first = sub_l.first()
-    sub_l.appped(10)
-    l.prepend(sub_l)
-    sub_l.appped("Hola")
-
-    print(l)
+    pass
