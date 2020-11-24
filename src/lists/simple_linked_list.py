@@ -54,6 +54,19 @@ class SimpleLinkedList:
         count += 1
         return self.get(idx, count, node.next)
 
+    def get_node(self, idx, count=0, node=None):
+        self.__val_index(idx)
+        if idx == 0:
+            return self.__first
+        if idx == self.size() - 1:
+            return self.__last
+        if node is None:
+            node = self.__first
+        if idx == count:
+            return node
+        count += 1
+        return self.get(idx, count, node.next)
+
     def shift(self):
         if self.__first is not None:
             deleted_node = self.__first
@@ -125,6 +138,25 @@ class SimpleLinkedList:
             return l
 
         return self.copy(node=node.next, l=l)
+
+    def insert(self, idx, val):
+        self.__val_index(idx)
+        new_node = Node(val)
+        if self.__first is None:
+            self.__first = new_node
+            self.__last = new_node
+        else:
+            actual_node = self.get_node(idx)
+            new_node.next = actual_node.next
+            actual_node.next = new_node
+        self.__size += 1
+
+    def reverse(self):
+        l_reverse = SimpleLinkedList()
+        for i in range(self.size() - 1, -1, -1):
+            node = self.get(i)
+            l_reverse.append(node)
+        return l_reverse
 
     def __val_index(self, idx):
         if idx > self.size() - 1 or idx < 0:
