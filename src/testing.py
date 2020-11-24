@@ -21,6 +21,7 @@ from lib.inputs import input_int
 from lib.decorators import cronometer
 from lists.simple_linked_list import SimpleLinkedList
 from lists.support_functions import LinkedList as LinkedListSup
+from lib.util import clean_screen
 
 # lists
 from lists.simple_linked_list import SimpleLinkedList
@@ -124,45 +125,10 @@ def comparison():
 
 
 if __name__ == "__main__":
-    # l = SimpleLinkedList()
-    # LinkedListSup.fit_random(10, l, -10, 10)
-    # print(l)
-    # l.insert(9, "hola")
-    # print(l)
-    # l.pop(8)
-    # print(l)
-    # l.pop()
-    # print(l)
-    # print(l.reverse())
-    # l.invert()
-    # print(l)
-    dl = DoubleLinkedList()
-    dl.append(10)
-    dl.append(20)
-    dl.append("Hola mundo")
-    dl.append(True)
-    dl.shift()
-    n = dl.size()
-    val = dl.get(1)
-    print(val)
-    print(n)
-    print(dl)
-    dl.prepend("Alexito ")
-    dl.prepend("Alexito ")
-    dl.prepend("Santucho")
-    dl.prepend(12)
-    dl.remove(0)
-    print(dl)
-    dl.remove(2)
-    dl.update(4, "Alex uwu")
-    dl.insert(0, "Ivananananna")
-
-    dl.preinsert(2, "UWUS")
-    lr = dl.reverse()
-    print(lr)
-    print(dl)
-    copy = lr.copy()
-    print(copy)
-    print(id(copy))
-    print(id(lr))
-    dl.clear()
+    clean_screen()
+    l = DoubleLinkedList()
+    LinkedListSup.fit_random(10, l, -10, 10)
+    bl = BubbleSortLinked(l)
+    order_list = bl.upward()
+    bl.print_results()
+    print(order_list.reverse())

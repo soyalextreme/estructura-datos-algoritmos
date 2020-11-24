@@ -19,6 +19,7 @@ class BubbleSortLinked(SortMethod):
                     temp = l.get(j)
                     l.update(j, l.get(j + 1))
                     l.update(j + 1, temp)
+        return self.copy
 
     def downward(self):
         l = self.copy
@@ -29,3 +30,5 @@ class BubbleSortLinked(SortMethod):
                     temp = l.get(j)
                     l.update(j, l.get(j + 1))
                     l.update(j + 1, temp)
+
+        return self.copy

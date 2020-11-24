@@ -49,7 +49,7 @@ class DoubleLinkedList:
 
     def append(self, val):
         """ 
-            Appends a element at the end of the list
+            Appends a element at the end of the list.
         """
         new_node = Node(val)
         last = self.__last
@@ -65,7 +65,7 @@ class DoubleLinkedList:
 
     def get(self, idx):
         """
-            Gets the value of the index corresponding 
+            Gets the value of the index corresponding.
         """
         if idx == 0:
             return self.__first.getVal()
@@ -80,7 +80,7 @@ class DoubleLinkedList:
 
     def __get_node(self, idx):
         """
-            Gets the node corresponding to the index
+            Gets the node corresponding to the index.
         """
         if idx == 0:
             return self.__first
@@ -95,7 +95,7 @@ class DoubleLinkedList:
 
     def pop(self):
         """ 
-            Deletes the last element of the list
+            Deletes the last element of the list.
         """
         if self.size() > 1:
             prev = self.__last.getPrev()
@@ -107,7 +107,7 @@ class DoubleLinkedList:
 
     def shift(self):
         """
-            Deletes the first element of the list
+            Deletes the first element of the list.
         """
 
         if self.size() == 1:
@@ -121,9 +121,9 @@ class DoubleLinkedList:
             self.__first.setPrev(None)
             temp_first.setNext(None)
 
-    def prepend(self, val):
+    def preppend(self, val):
         """
-            Insert a element at the first position of the list
+            Insert a element at the first position of the list.
         """
         temp_first = self.__first
         new_node = Node(val)
@@ -138,17 +138,20 @@ class DoubleLinkedList:
         if idx == 0:
             return self.shift()
         elif idx == self.size() - 1:
+            print("Pop!")
             return self.pop()
 
         node_to_delete = self.__get_node(idx)
-        node_to_delete.getPrev().setNext(node_to_delete.getNext())
-        node_to_delete.getNext().setPrev(node_to_delete.getPrev())
+        prev_node = node_to_delete.getPrev()
+        next_node = node_to_delete.getNext()
+        prev_node.setNext(next_node)
+        next_node.setPrev(prev_node)
         node_to_delete.setPrev(None)
         node_to_delete.setNext(None)
 
     def update(self, idx, val):
         """
-            Updates the value of the position of a element
+            Updates the value of the position of a element.
         """
         if self.size() > 0 and idx <= self.size() - 1 and idx >= 0:
             node = self.__get_node(idx)
@@ -158,8 +161,11 @@ class DoubleLinkedList:
 
     def insert(self, idx, val):
         """
-            Insert before the value of the index.
+            Insert after the value of the index.
         """
+        if idx == self.size() - 1:
+            return self.append(val)
+
         if self.size() > 0 and idx <= self.size() - 1 and idx >= 0:
             node = self.__get_node(idx)
             new_node = Node(val)
@@ -169,6 +175,9 @@ class DoubleLinkedList:
             new_node.setNext(temp_next)
 
     def preinsert(self, idx, val):
+        """
+            Inserts a element before a element.
+        """
         new_node = Node(val)
         if idx == 0:
             temp_first = self.__first
@@ -186,14 +195,14 @@ class DoubleLinkedList:
 
     def clear(self):
         """
-            This method clears and deletes all the elements in the list
+            This method clears and deletes all the elements in the list.
         """
         self.__first = None
         self.__last = None
 
     def reverse(self, node=None, l=None):
         """
-            Returns a copy of the list but inverted
+            Returns a copy of the list but inverted.
         """
         if l is None:
             node = self.__last
@@ -219,6 +228,9 @@ class DoubleLinkedList:
         return l_copy
 
     def size(self, node=None, size=0):
+        """ 
+            Returns the size of the list.
+        """
         if self.__first is None:
             return 0
 
@@ -250,6 +262,6 @@ class DoubleLinkedList:
             return chain
 
         # there are still elements
-        chain += ", "
+        chain += " | "
 
         return self.__str__(node.getNext(), chain)
