@@ -1,6 +1,18 @@
+"""
+
+    Double Linked List 
+    =================================================
+    @date:
+    23-11-2020
+    @author:
+    Alejandro AS
+"""
 
 
 class Node:
+    """
+        Node Class with props for the double linked list
+    """
 
     def __init__(self, value):
         self.__value = value
@@ -27,6 +39,9 @@ class Node:
 
 
 class DoubleLinkedList:
+    """
+        Double Linked List Class
+    """
 
     def __init__(self):
         self.__first = None
