@@ -215,6 +215,17 @@ class DoubleLinkedList:
 
         return self.reverse(node.getPrev(), l)
 
+    def invert(self):
+        inverted_node = None
+        actual_node = self.__first
+        self.__last = actual_node
+        while actual_node != None:
+            inverted_node = actual_node.getPrev()
+            actual_node.setPrev(actual_node.getNext())
+            actual_node.setNext(inverted_node)
+            actual_node = actual_node.getPrev()
+        self.__first = inverted_node.getPrev()
+
     def copy(self):
         """
             Returns a copy of the list with different memory location for usage.
