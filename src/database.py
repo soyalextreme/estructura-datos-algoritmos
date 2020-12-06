@@ -1,5 +1,5 @@
 import pickle
-
+import os
 from lists.circular_linked_list import CircularLinkedList
 from lists.binary_tree import BinarySearchTreeAdapted as BinarySearchTree
 
@@ -25,24 +25,29 @@ def save():
 
     database = [d, p, da]
 
-    with open("DATABASE.txt", "wb") as fp:
+    with open(".DATABASE.txt", "wb") as fp:
         pickle.dump(database, fp)
 
 
 def load():
 
-    with open("DATABASE.txt", "rb") as fp:
-        database = pickle.load(fp)
+    try:
+        with open(".DATABASE.txt", "rb") as fp:
+            database = pickle.load(fp)
 
-    d = database[0]
-    p = database[1]
-    da = database[2]
+        d = database[0]
+        p = database[1]
+        da = database[2]
 
-    for doc in d:
-        DOCTORS.append(doc)
+        for doc in d:
+            DOCTORS.append(doc)
 
-    for patient in p:
-        PATIENTS.append(patient)
+        for patient in p:
+            PATIENTS.append(patient)
 
-    for date in da:
-        DATES.append(date)
+        for date in da:
+            DATES.append(date)
+
+    except FileNotFoundError as e:
+        input("Creating a file .DATABASE.txt")
+        os.system("touch .DATABASE.txt")
