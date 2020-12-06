@@ -1,3 +1,7 @@
+"""
+    Simple Linked List 
+    Data structure
+"""
 
 
 class Node:

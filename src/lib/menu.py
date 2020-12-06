@@ -9,8 +9,9 @@
 """
 
 
-from lib.inputs import input_int
+from lib.inputs import input_int, input_str_non_empty
 from lib.util import clean_screen
+from time import sleep
 
 
 def print_format_item(val, title):
@@ -107,3 +108,28 @@ class Menu():
         while self.__opc != self.__exit_val:
             self.__opc = self.print_opc()
             self.eval_opc()
+
+
+class MenuOptions():
+
+    def __init__(self, opcs):
+        self.__opcs = opcs
+
+    def select(self, start=0):
+        s = None
+
+        while s != "r":
+            from lib.util import clean_screen
+            clean_screen()
+            s = input(
+                f"      => {self.__opcs[start]}\n\n\n[ r ] to select\n[anything] to see next option\n_")
+
+            if s == "r":
+                continue
+
+            if start == len(self.__opcs) - 1:
+                start = 0
+            else:
+                start += 1
+
+        return start

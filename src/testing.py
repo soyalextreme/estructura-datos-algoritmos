@@ -3,7 +3,7 @@
     Alejandro Andrade Soriano
     02/11/2020
 """
-
+import random
 
 from sorting.bubble_sort import BubbleSort
 from sorting.insertion_sort import InsertionSort
@@ -26,6 +26,10 @@ from lib.util import clean_screen
 # lists
 from lists.simple_linked_list import SimpleLinkedList
 from lists.double_linked_list import DoubleLinkedList
+from lists.binary_tree import BinarySearchTree
+
+# Models
+from models.Patient import Patient
 
 
 def test_sort(SortClass, linked=False):
@@ -125,13 +129,19 @@ def comparison():
 
 
 if __name__ == "__main__":
-    clean_screen()
-    l = DoubleLinkedList()
-    l.append("Andrade")
-    l.append("Alvarez")
-    l.append("Alvarado")
-    l.append("Zaragoza")
-    # LinkedListSup.fit_random(10, l, -10, 10)
-    bl = BubbleSortLinked(l)
-    bl.upward()
-    bl.print_results()
+    a = BinarySearchTree()
+
+    for _ in range(100):
+        n = random.randint(-100, 100)
+        a.insert(n)
+
+    a.insert(10)
+    a.insert(20)
+    a.delete(10)
+    print(a.find(10))
+    l = a.innorder()
+    print(l)
+    l = a.preorder()
+    print(l)
+    l = a.postorder()
+    print(l)

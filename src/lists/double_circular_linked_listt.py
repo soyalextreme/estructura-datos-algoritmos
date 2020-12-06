@@ -1,9 +1,10 @@
+
 """
 
-    Double Linked List 
+    Double Circular Linked List
     =================================================
     @date:
-    23-11-2020
+    01-11-2020
     @author:
     Alejandro AS
 """
@@ -38,7 +39,7 @@ class Node:
         self.__value = new_value
 
 
-class DoubleLinkedList:
+class DoubleCircularLinkedList:
     """
         Double Linked List Class
     """
@@ -48,7 +49,7 @@ class DoubleLinkedList:
         self.__last = None
 
     def append(self, val):
-        """ 
+        """
             Appends a element at the end of the list.
         """
         new_node = Node(val)
@@ -62,6 +63,8 @@ class DoubleLinkedList:
         self.__last.setNext(new_node)
         new_node.setPrev(last)
         self.__last = new_node
+        self.__last.setNext(self.__first)
+        self.__first.setPrev(self.__last)
 
     def get(self, idx):
         """
@@ -94,14 +97,17 @@ class DoubleLinkedList:
         return node
 
     def pop(self):
-        """ 
+        """
             Deletes the last element of the list.
         """
         if self.size() > 1:
             prev = self.__last.getPrev()
             prev.setNext(None)
             self.__last.setPrev(None)
+            self.__last.setNext(None)
             self.__last = prev
+            self.__last.setNext(self.__first)
+            self.__first.setPrev(self.__last)
         else:
             self.shift()
 
@@ -113,26 +119,31 @@ class DoubleLinkedList:
         if self.size() == 1:
             self.__first = None
             self.__last = None
+            return
         elif self.size() == 0:
             return
         else:
             temp_first = self.__first
             self.__first = temp_first.getNext()
-            self.__first.setPrev(None)
+            self.__first.setPrev(self.__last)
+            self.__last.setNext(self.__first)
             temp_first.setNext(None)
+            temp_first.setPrev(None)
 
     def preppend(self, val):
         """
             Insert a element at the first position of the list.
         """
         if self.__first == None and self.__last == None:
-            return self.append(val)
+            self.append(val)
 
         temp_first = self.__first
         new_node = Node(val)
         temp_first.setPrev(new_node)
         new_node.setNext(temp_first)
         self.__first = new_node
+        self.__first.setPrev(self.__last)
+        self.__last.setNext(self.__first)
 
     def remove(self, idx):
         """
@@ -149,6 +160,9 @@ class DoubleLinkedList:
         next_node = node_to_delete.getNext()
         prev_node.setNext(next_node)
         next_node.setPrev(prev_node)
+        if self.size() == 1:
+            self.__first.setPrev(None)
+            self.__last.setNext(None)
         node_to_delete.setPrev(None)
         node_to_delete.setNext(None)
 
@@ -183,10 +197,7 @@ class DoubleLinkedList:
         """
         new_node = Node(val)
         if idx == 0:
-            temp_first = self.__first
-            self.__first = new_node
-            new_node.setNext(temp_first)
-            temp_first.setPrev(new_node)
+            return self.preppend(val)
 
         if self.size() > 0 and idx <= self.size() - 1 and idx >= 0:
             node = self.__get_node(idx - 1)
@@ -203,37 +214,28 @@ class DoubleLinkedList:
         self.__first = None
         self.__last = None
 
-    def reverse(self, node=None, l=None):
-        """
-            Returns a copy of the list but inverted.
-        """
-        if l is None:
-            node = self.__last
-            l = DoubleLinkedList()
-
-        l.append(node.getVal())
-
-        if node.getPrev() is None:
-            return l
-
-        return self.reverse(node.getPrev(), l)
-
     def invert(self):
         inverted_node = None
         actual_node = self.__first
         self.__last = actual_node
-        while actual_node != None:
+        i = self.size()
+        while i > 0:
             inverted_node = actual_node.getPrev()
             actual_node.setPrev(actual_node.getNext())
             actual_node.setNext(inverted_node)
             actual_node = actual_node.getPrev()
+            i -= 1
         self.__first = inverted_node.getPrev()
+
+        if self.size() > 1:
+            self.__first.setPrev(self.__last)
+            self.__last.setNext(self.__first)
 
     def copy(self):
         """
             Returns a copy of the list with different memory location for usage.
         """
-        l_copy = DoubleLinkedList()
+        l_copy = DoubleCircularLinkedList()
         node = self.__first
         for _ in range(self.size()):
             l_copy.append(node.getVal())
@@ -242,7 +244,7 @@ class DoubleLinkedList:
         return l_copy
 
     def size(self, node=None, size=0):
-        """ 
+        """
             Returns the size of the list.
         """
         if self.__first is None:
@@ -253,29 +255,18 @@ class DoubleLinkedList:
 
         size += 1
 
-        if node.getNext() is None:
+        if node.getNext() == self.__first or node.getNext() == None:
             return size
 
         return self.size(node.getNext(), size)
 
-    def __str__(self, node=None, chain="["):
-        if node is None:
-            # first call time
-            node = self.__first
-            if self.__first is None:
-                return "[ ]"
-
-        try:
-            chain += '"' + node.getVal() + '"'
-        except TypeError as e:
-            chain += str(node.getVal())
-
-        if node.getNext() is None:
-            # last element
-            chain += "]"
-            return chain
-
-        # there are still elements
-        chain += " | "
-
-        return self.__str__(node.getNext(), chain)
+    def __str__(self):
+        l = []
+        node = self.__first
+        for _ in range(self.size()):
+            try:
+                l.append(node.getVal())
+                node = node.getNext()
+            except AttributeError as e:
+                return str(l)
+        return str(l)
