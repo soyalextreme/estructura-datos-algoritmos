@@ -198,6 +198,20 @@ class CircularLinkedList:
         node.next = prev
         self.__first = prev
 
+    def copy(self):
+        """
+            Returns a copy of the linked list with different pointer.
+        """
+        copy = CircularLinkedList()
+        for i in range(self.size()):
+            val_node = self.get(i)
+            copy.append(val_node)
+        return copy
+
+    def clear(self):
+        self.__first = None
+        self.__last = None
+
     def __str__(self):
         node = self.__first
         chain = "["

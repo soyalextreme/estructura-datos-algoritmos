@@ -11,6 +11,7 @@ DOCTORS_TREE = BinarySearchTree()
 
 
 def save():
+
     d = []
     for i in range(DOCTORS.size()):
         d.append(DOCTORS.get(i))
@@ -30,24 +31,47 @@ def save():
 
 
 def load():
-
+    DOCTORS.clear()
+    PATIENTS.clear()
+    DATES.clear()
     try:
         with open(".DATABASE.txt", "rb") as fp:
-            database = pickle.load(fp)
+            try:
+                database = pickle.load(fp)
 
-        d = database[0]
-        p = database[1]
-        da = database[2]
+                d = database[0]
+                p = database[1]
+                da = database[2]
 
-        for doc in d:
-            DOCTORS.append(doc)
+                for doc in d:
+                    DOCTORS.append(doc)
 
-        for patient in p:
-            PATIENTS.append(patient)
+                for patient in p:
+                    PATIENTS.append(patient)
 
-        for date in da:
-            DATES.append(date)
+                for date in da:
+                    DATES.append(date)
+
+            except EOFError as e:
+                input("Empty DB")
 
     except FileNotFoundError as e:
         input("Creating a file .DATABASE.txt")
         os.system("touch .DATABASE.txt")
+
+
+def save_changes(func):
+    def wrapper(*args, **kwargs):
+        changes = func()
+        save()
+        load()
+        if changes:
+            for i in range(10):
+                from lib.util import clean_screen
+                clean_screen()
+                print("SAVING AND LOADING CHANGES")
+                print("=" * i * 5)
+                from time import sleep
+                sleep(0.3)
+        return None
+    return wrapper

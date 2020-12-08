@@ -4,9 +4,10 @@
     Alejandro AS
     04-12-2020
 """
+from models.Entity import Entity
 
 
-class Date:
+class Date(Entity):
 
     def __init__(self, uid, doctor, patient, date, time, description):
         self.__uid = uid
@@ -15,6 +16,7 @@ class Date:
         self.__description = description
         self.__time = time
         self.__date = date
+        Entity.__init__(self)
 
     def get_uid(self):
         return self.__uid
@@ -37,8 +39,20 @@ class Date:
     def set_date(self, new):
         self.__date = new
 
+    def get_doctor(self):
+        return self.__doctor
+
+    def get_patient(self):
+        return self.__patient
+
+    def set_patient(self, new_patient):
+        self.__patient = new_patient
+
+    def set_doctor(self, new_doctor):
+        self.__doctor = new_doctor
+
     def __str__(self):
-        return f"""
+        return Entity.__str__(self) + f"""
             Date ID: {self.get_uid()}
             Date: {self.get_date()} {self.get_time()} 
             Description: {self.get_description()}

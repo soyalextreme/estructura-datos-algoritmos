@@ -29,6 +29,9 @@ class User(Entity):
     def get_last_name(self):
         return self.__last_name
 
+    def get_full_name(self):
+        return self.__name + " " + self.__last_name
+
     def set_email(self, new_email):
         self.__email = new_email
 
